@@ -6,6 +6,8 @@ namespace Mockup
 {
     public class EnemyUnit : Unit
     {
+        public EnemyType enemyType;
+        [Space]
         public List<Transform> targetPatrol;
         private Transform current;
         private int currentNum = 0;

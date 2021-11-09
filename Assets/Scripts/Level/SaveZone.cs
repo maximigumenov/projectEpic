@@ -5,22 +5,8 @@ using UnityEngine.Events;
 
 namespace Mockup
 {
-    public class SaveZone : MonoBehaviour
+    public class SaveZone : EventZone
     {
-        private InputData inputData = new InputData();
-        public Transform cameraMarkTarget;
-        public Transform cameraMarkLook;
-        [Space]
-        public GameObject buttonMark;
-        [Space]
-        public float distanceToUnit = 4;
-        private bool isActive;
-        public UnityEvent activeEvent;
-        public UnityEvent deactiveEvent;
-
-
-        private bool isCanActive = false;
-
         private void Update()
         {
             ShowMark();
@@ -42,30 +28,5 @@ namespace Mockup
                 }
             }
         }
-
-
-        public void SetCamera()
-        {
-            MoveCamera.SetTarget(cameraMarkTarget, cameraMarkLook);
-        }
-
-
-        public void ShowMark() {
-            isCanActive = MainUnit.GetDistance(transform) < distanceToUnit;
-            buttonMark.SetActive(isCanActive);
-        }
-
-        public void HideUnit()
-        {
-            SetCamera();
-            MainUnit.HideUnit();
-        }
-
-        public void ShowUnit()
-        {
-            MainUnit.ShowUnit();
-        }
-
-
     }
 }
