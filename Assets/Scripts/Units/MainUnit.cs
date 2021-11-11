@@ -6,7 +6,7 @@ namespace Mockup
 {
     public class MainUnit : Unit
     {
-        private static MainUnit instance;
+        public static MainUnit instance;
         private InputData inputData = new InputData();
         public List<MeshRenderer> meshRenderer;
         private static bool isBlock;
@@ -59,6 +59,11 @@ namespace Mockup
                 item.enabled = false;
             }
             
+        }
+
+        public static void BlockUnit()
+        {
+            isBlock = true;
         }
 
         public static void ShowUnit()

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Mockup
 {
@@ -24,6 +25,9 @@ namespace Mockup
 
         }
 
+        public void LookAt(Transform targetLook) {
+            transform.LookAtTarget(targetLook);
+        }
 
         public void SetCamera()
         {
@@ -32,6 +36,11 @@ namespace Mockup
 
         public void MoveWait() {
             controller.Move(Vector3.down * Time.deltaTime * playerSpeedCurrent);
+        }
+
+        public void MoveUp()
+        {
+            controller.Move(Vector3.up * Time.deltaTime * playerSpeedCurrent);
         }
 
         public void MoveForvard()
@@ -54,6 +63,7 @@ namespace Mockup
             controller.transform.Rotate(0, playerSpeedRotate * Time.deltaTime * 100, 0);
         }
 
+       
         
     }
 }
