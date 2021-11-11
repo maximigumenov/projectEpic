@@ -15,6 +15,15 @@ namespace Mockup
         public bool isRun = false;
         public float playerRun = 4.0f;
 
+        public virtual void Initialization() { 
+        
+        }
+
+        public virtual void UpdateUnit()
+        {
+
+        }
+
 
         public void SetCamera()
         {

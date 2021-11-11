@@ -7,7 +7,9 @@ namespace Mockup
 {
     public class EventZone : MonoBehaviour
     {
+        private static GameObject buttonMarkStatic;
         public InputData inputData = new InputData();
+        public string tipsData;
 
         public Transform cameraMarkTarget;
         public Transform cameraMarkLook;
@@ -40,6 +42,30 @@ namespace Mockup
         {
             isCanActive = MainUnit.GetDistance(transform) < distanceToUnit;
             buttonMark.SetActive(isCanActive);
+            if (isCanActive)
+            {
+                buttonMarkStatic = buttonMark;
+            }
+
+            TextController();
+        }
+
+        public void TextController() {
+            if (buttonMarkStatic == null)
+            {
+                return;
+            }
+            if (!buttonMarkStatic.activeInHierarchy)
+            {
+                MessageTextUI.Clear();
+            }
+            else
+            {
+                if (buttonMarkStatic == buttonMark)
+                {
+                    MessageTextUI.Tip(tipsData);
+                }  
+            }
         }
     }
 }

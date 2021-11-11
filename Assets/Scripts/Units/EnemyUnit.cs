@@ -16,16 +16,49 @@ namespace Mockup
 
         private void Start()
         {
-            targetPatrol.Shuffle();
-            Next();
+            Initialization();
         }
 
         private void Update()
         {
-            CheckDistance();
-            MoveForvard();
-            transform.LookAtTarget(current);
+            UpdateUnit();
         }
+
+        public override void Initialization()
+        {
+            base.Initialization();
+            switch (enemyType)
+            {
+                case EnemyType.Sleep:
+                    break;
+                case EnemyType.Patrolling:
+                    targetPatrol.Shuffle();
+                    Next();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        public override void UpdateUnit()
+        {
+            base.UpdateUnit();
+            switch (enemyType)
+            {
+                case EnemyType.Sleep:
+                    MoveWait();
+                    break;
+                case EnemyType.Patrolling:
+                    CheckDistance();
+                    MoveForvard();
+                    transform.LookAtTarget(current);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        
 
         private void Next() {
             current = targetPatrol[currentNum];
