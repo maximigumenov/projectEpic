@@ -25,7 +25,6 @@ public class MoveToClass
     {
         current = targets[currentNum];
         currentNum++;
-        Debug.LogError(currentNum + " " + targets.Count);
         if (currentNum >= targets.Count)
         {
             currentNum = 0;

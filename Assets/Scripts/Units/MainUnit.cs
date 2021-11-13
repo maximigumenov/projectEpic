@@ -10,6 +10,7 @@ namespace Mockup
         private InputData inputData = new InputData();
         public List<MeshRenderer> meshRenderer;
         private static bool isBlock;
+        public Transform targetLook;
 
         private void Start()
         {
@@ -19,6 +20,7 @@ namespace Mockup
         private void Update()
         {
             UpdateInput();
+            transform.LookAtTarget(targetLook);
         }
 
         private void UpdateInput() {

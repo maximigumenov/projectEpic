@@ -36,7 +36,6 @@ namespace Mockup
         {
             if (isCanActive && inputData.Action && !isJumpZone)
             {
-                Debug.Log("Jump");
                 isJumpZone = true;
                 moveToClass = new MoveToClass(MainUnit.instance.transform, targets, speed);
                 moveToClass.OnFinish += Stop;
@@ -47,7 +46,6 @@ namespace Mockup
 
         private void Stop()
         {
-            Debug.LogError("Stop");
             moveToClass = null;
             isJumpZone = false;
             MainUnit.ShowUnit();

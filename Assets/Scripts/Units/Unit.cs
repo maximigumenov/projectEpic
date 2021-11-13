@@ -55,12 +55,12 @@ namespace Mockup
 
         public void MoveLeft()
         {
-            controller.transform.Rotate(0, -playerSpeedRotate * Time.deltaTime * 100, 0);
+            controller.Move(controller.transform.right * -1 * Time.deltaTime * playerSpeedCurrent);
         }
 
         public void MoveRight()
         {
-            controller.transform.Rotate(0, playerSpeedRotate * Time.deltaTime * 100, 0);
+            controller.Move(controller.transform.right * Time.deltaTime * playerSpeedCurrent);
         }
 
        
