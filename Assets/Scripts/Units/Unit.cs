@@ -15,6 +15,14 @@ namespace Mockup
         public float playerSpeedCurrent { get { return (isRun) ? playerSpeedRun : playerSpeed; } }
         public bool isRun = false;
         public float playerRun = 4.0f;
+        public bool isMove;
+        public Transform animationTransform;
+
+
+
+        public virtual void AlignAnimationRotation() {
+            animationTransform.rotation = new Quaternion(0, 0, 0, 0);
+        }
 
         public virtual void Initialization() { 
         
@@ -23,6 +31,10 @@ namespace Mockup
         public virtual void UpdateUnit()
         {
 
+        }
+
+        public virtual void StartMove() {
+            isMove = false;
         }
 
         public void LookAt(Transform targetLook) {
@@ -41,26 +53,31 @@ namespace Mockup
         public void MoveUp()
         {
             controller.Move(Vector3.up * Time.deltaTime * playerSpeedCurrent);
+            isMove = true;
         }
 
         public void MoveForvard()
         {
             controller.Move(controller.transform.forward * Time.deltaTime * playerSpeedCurrent);
+            isMove = true;
         }
 
         public void MoveBack()
         {
             controller.Move(-controller.transform.forward * Time.deltaTime * playerSpeed / 2);
+            isMove = true;
         }
 
         public void MoveLeft()
         {
             controller.Move(controller.transform.right * -1 * Time.deltaTime * playerSpeedCurrent);
+            isMove = true;
         }
 
         public void MoveRight()
         {
             controller.Move(controller.transform.right * Time.deltaTime * playerSpeedCurrent);
+            isMove = true;
         }
 
        

@@ -11,6 +11,8 @@ namespace Mockup
         public List<MeshRenderer> meshRenderer;
         private static bool isBlock;
         public Transform targetLook;
+        [SerializeField]
+        private UnitAnimation animation;
 
         private void Start()
         {
@@ -24,11 +26,13 @@ namespace Mockup
         }
 
         private void UpdateInput() {
+            StartMove();
             if (isBlock)
             {
                 return;
             }
 
+            AlignAnimationRotation();
             isRun = inputData.Shift;
             MoveWait();
             if (inputData.Left)
@@ -47,6 +51,22 @@ namespace Mockup
             {
                 MoveBack();
             }
+            ControlAnimation();
+        }
+
+        public void ControlAnimation() {
+            if (!isMove)
+            {
+                animation.Idle();
+            }
+            else if (isMove && isRun)
+            {
+                animation.Run();
+            }
+            else if (isMove && !isRun)
+            {
+                animation.Walk();
+            }
         }
 
         public static float GetDistance(Transform target) {
@@ -58,7 +78,10 @@ namespace Mockup
             isBlock = true;
             foreach (var item in instance.meshRenderer)
             {
-                item.enabled = false;
+                if (item)
+                {
+                    item.enabled = false;
+                }
             }
             
         }
