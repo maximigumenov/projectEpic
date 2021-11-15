@@ -10,18 +10,25 @@ namespace Mockup
         [Space]
         public CharacterController controller;
         public float playerSpeed = 2.0f;
+        public float playerSpeedCrouch = 1f;
         public float playerSpeedRun = 4.0f;
         public float playerSpeedRotate = 1.0f;
-        public float playerSpeedCurrent { get { return (isRun) ? playerSpeedRun : playerSpeed; } }
+        public float playerSpeedCurrent { get {
+                return (isRun) ? playerSpeedRun : (isCrouch)? playerSpeedCrouch: playerSpeed; } 
+        }
         public bool isRun = false;
         public float playerRun = 4.0f;
         public bool isMove;
+        public bool isLeft;
+        public bool isRight;
+        public bool isForvard;
+        public bool isBack;
         public Transform animationTransform;
-
+        public bool isCrouch;
 
 
         public virtual void AlignAnimationRotation() {
-            animationTransform.rotation = new Quaternion(0, 0, 0, 0);
+            
         }
 
         public virtual void Initialization() { 
@@ -35,6 +42,10 @@ namespace Mockup
 
         public virtual void StartMove() {
             isMove = false;
+            isLeft = false;
+            isRight = false;
+            isForvard = false;
+            isBack = false;
         }
 
         public void LookAt(Transform targetLook) {
@@ -60,24 +71,28 @@ namespace Mockup
         {
             controller.Move(controller.transform.forward * Time.deltaTime * playerSpeedCurrent);
             isMove = true;
+            isForvard = true;
         }
 
         public void MoveBack()
         {
-            controller.Move(-controller.transform.forward * Time.deltaTime * playerSpeed / 2);
+            controller.Move(-controller.transform.forward * Time.deltaTime * playerSpeedCurrent);
             isMove = true;
+            isBack = true;
         }
 
         public void MoveLeft()
         {
             controller.Move(controller.transform.right * -1 * Time.deltaTime * playerSpeedCurrent);
             isMove = true;
+            isLeft = true;
         }
 
         public void MoveRight()
         {
             controller.Move(controller.transform.right * Time.deltaTime * playerSpeedCurrent);
             isMove = true;
+            isRight = true;
         }
 
        

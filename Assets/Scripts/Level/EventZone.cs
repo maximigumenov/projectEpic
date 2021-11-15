@@ -8,6 +8,7 @@ namespace Mockup
     public class EventZone : MonoBehaviour
     {
         private static GameObject buttonMarkStatic;
+        public static bool isEventZone { get { return buttonMarkStatic != null && buttonMarkStatic.activeInHierarchy; } }
         public InputData inputData = new InputData();
         public string tipsData;
 
@@ -21,6 +22,7 @@ namespace Mockup
         public UnityEvent activeEvent;
         public UnityEvent deactiveEvent;
         public bool isCanActive = false;
+        public bool isCurrentActive;
 
         public void SetCamera()
         {
@@ -58,14 +60,18 @@ namespace Mockup
             if (!buttonMarkStatic.activeInHierarchy)
             {
                 MessageTextUI.Clear();
+                
             }
             else
             {
+                isCurrentActive = buttonMarkStatic == buttonMark;
                 if (buttonMarkStatic == buttonMark)
                 {
                     MessageTextUI.Tip(tipsData);
                 }  
             }
         }
+
+        
     }
 }
