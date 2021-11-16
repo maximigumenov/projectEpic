@@ -11,4 +11,5 @@ public class InputData
     public bool Action { get { return Input.GetKeyDown(KeyCode.E); } }
     public bool Exit { get { return Input.GetKeyDown(KeyCode.Escape); } }
     public bool Shift { get { return Input.GetKey(KeyCode.LeftShift); } }
+    public bool SpacePress { get { return Input.GetKeyDown(KeyCode.Space); } }
 }

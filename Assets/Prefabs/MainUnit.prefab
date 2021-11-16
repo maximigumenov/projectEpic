@@ -436,9 +436,7 @@ MonoBehaviour:
   isBack: 0
   animationTransform: {fileID: 230537819971841068}
   isCrouch: 0
-  meshRenderer:
-  - {fileID: 230537821620286076}
-  - {fileID: 0}
+  meshRenderer: []
   targetLook: {fileID: 230537821390509652}
   targetLookLeft: {fileID: 230537821530158114}
   targetLookRight: {fileID: 230537821036917602}

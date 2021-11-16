@@ -23,7 +23,6 @@ namespace Mockup
             if (isCanActive && isCurrentActive)
             {
                 MainUnit.instance.isCrouch = true;
-                Debug.LogError("CrouchZone");
             }
             StartCoroutine(EventController());
         }
